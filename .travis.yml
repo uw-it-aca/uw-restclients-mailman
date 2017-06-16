@@ -1,0 +1,32 @@
+sudo: false
+language: python
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
+before_script:
+- pip install -e .
+- pip install pep8
+- pip install nose2
+- pip install coverage
+- pip install commonconf
+- pip install python-coveralls
+script:
+- pep8 uw_mailman/ --exclude=uw_mailman/tests
+- coverage run --source=uw_mailman uw_mailman/test.py -v
+after_script:
+- coveralls
+before_deploy:
+- find uw_mailman/ -name \*.pyc -exec rm {} \;
+- echo $TRAVIS_TAG > uw_mailman/VERSION
+deploy:
+  provider: pypi
+  server: https://pypi.python.org/pypi
+  user: uw-it-aca
+  skip_cleanup: true
+  password:
+    secure: KuGyYibfk+D0D1yC+iK3hc8jwFk8H6YkrRpctlhF7YSCeMw3kHQ3ugP/WQlVn3+zPOC0i8CXxJ56lKURButqjEYyxa9HfkC4vBbIFFOEx0NpzRQf7e8nIvJ8TDzSfkWm24ZNt8s0CKIZaezKE2U6X0ZeIgNLLoE31atzJ2mGjLNjilR8PwaA7jtKl2JE3aMzFKbwQbQaC69ZSSvsBB4ydY04u39C3aX7Om0bn/yrSYvBILeOz054/OkW2OWiqs1A6IeeCYm4nmFfslFaI2wVZKyqBY9nz8oIPg7Uj/DuTLh7rVT1ttyn/Zoq75VonWl8SAfqipZhq3CZAkLYqUSNmXdiGS0CFG3Z3T6aXvO+j+Hl29NlroLMudhkuaD4bkDqZiz4KMs48iSesqDtLXw/4J5RLbIpyrjTe7TZ3I8j5I//BtQidg8yotHxB+PrkOfY0u+bls+JUR8dpMf55Z+ngHROSc1Yonv/cEPARG/hadc+99BjqyCAEdWVznTgB+fRQfl4VKGv/TWfAB1+mZaRclInrAxxiPceZS4IFnZfj1xoZ/3GcuPeDIrGtRbQio9FResw+/YGJqJbOp4xPjCelDMA7oHSEYA+piqHDTZLSWxElo1WaZM5X6PzdDgl3pHyJ92wKt6Qp0B/TZd4XHw5yWww6AoMWstfWPk8CUwZgTU=
+  on:
+    tags: true
+    condition: $TRAVIS_PYTHON_VERSION = "2.7"
