@@ -19,6 +19,7 @@ after_script:
 - coveralls
 before_deploy:
 - find uw_mailman/ -name \*.pyc -exec rm {} \;
+- echo $TRAVIS_TAG
 - echo $TRAVIS_TAG > uw_mailman/VERSION
 deploy:
   provider: pypi
