@@ -31,6 +31,9 @@ class TestMailmanCourseLists(TestCase):
         self.assertEqual(get_course_list_name("MATH", "125", "G",
                                               "summer", 2013),
                          'math125g_su13')
+        self.assertEqual(get_course_list_name("MATH", "125", "G",
+                                              "summer", 2013, True),
+                         'multi_math125g_su13')
 
     def test_exists_course_list(self):
         self.assertFalse(exists_course_list("B BIO", "180",
@@ -52,7 +55,6 @@ class TestMailmanCourseLists(TestCase):
     def test_tac_section_list_names(self):
         section = get_section_by_label('2013,autumn,T BUS,310/A')
         self.assertEqual(get_section_list_name(section),
-                         'tbus310a_au13')
         self.assertEqual(get_section_secondary_combined_list_name(section),
                          'multi_tbus310a_au13')
 
