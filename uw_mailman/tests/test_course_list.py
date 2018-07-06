@@ -55,6 +55,7 @@ class TestMailmanCourseLists(TestCase):
     def test_tac_section_list_names(self):
         section = get_section_by_label('2013,autumn,T BUS,310/A')
         self.assertEqual(get_section_list_name(section),
+                         'tbus310a_au13')
         self.assertEqual(get_section_secondary_combined_list_name(section),
                          'multi_tbus310a_au13')
 
