@@ -13,11 +13,15 @@ def _get_list_name_curr_abbr(curriculum_abbr):
 
 
 def get_course_list_name(curriculum_abbr, course_number, section_id,
-                         quarter, year):
+                         quarter, year, joint=False):
     """
     Return the list address of UW course email list
     """
-    return "%s%s%s_%s%s" % (
+    prefix = ""
+    if joint:
+        prefix = "multi_"
+    return "%s%s%s%s_%s%s" % (
+        prefix,
         _get_list_name_curr_abbr(curriculum_abbr),
         course_number,
         section_id.lower(),
@@ -27,12 +31,12 @@ def get_course_list_name(curriculum_abbr, course_number, section_id,
 
 
 def exists_course_list(curriculum_abbr, course_number, section_id,
-                       quarter, year):
+                       quarter, year, joint=False):
     """
     Return True if the corresponding mailman list exists for the course
     """
     return exists(get_course_list_name(curriculum_abbr, course_number,
-                                       section_id, quarter, year))
+                                       section_id, quarter, year, joint))
 
 
 def get_section_list_name(section):
