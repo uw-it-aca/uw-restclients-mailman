@@ -17,11 +17,11 @@ def get_course_list_name(curriculum_abbr, course_number, section_id,
     """
     Return the list address of UW course email list
     """
-    multi = ""
+    prefix = ""
     if joint:
-        multi = "multi_"
+        prefix = "multi_"
     return "%s%s%s%s_%s%s" % (
-        multi,
+        prefix,
         _get_list_name_curr_abbr(curriculum_abbr),
         course_number,
         section_id.lower(),
