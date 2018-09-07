@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 
 def get_resource(url):
     response = Mailman_DAO().getURL(url, {'Accept': 'application/json'})
-    logger.info("GET %s ==status==> %s" % (url, response.status))
+    logger.debug("GET {} ==status==> {}".format(url, response.status))
 
+    response_data = str(response.data)
     if response.status != 200:
-        raise DataFailureException(url, response.status, response.data)
+        raise DataFailureException(url, response.status, response_data)
 
-    logger.debug("GET %s ==data==> %s" % (url, response.data))
+    logger.debug("GET {} ==data==> {}".format(url, response_data))
     return response.data
