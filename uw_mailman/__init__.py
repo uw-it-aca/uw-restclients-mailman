@@ -14,7 +14,7 @@ def get_resource(url):
     response = Mailman_DAO().getURL(url, {'Accept': 'application/json'})
     logger.debug("GET {} ==status==> {}".format(url, response.status))
 
-    response_data = str(response_data)
+    response_data = str(response.data)
     if response.status != 200:
         raise DataFailureException(url, response.status, response_data)
 
