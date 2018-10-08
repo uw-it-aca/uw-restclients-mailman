@@ -10,10 +10,10 @@ def get_instructor_term_list_name(instructor_netid, year, quarter):
     Return the list address of UW instructor email list for
     the given year and quarter
     """
-    return "%s_%s%s" % (
-        instructor_netid,
-        quarter.lower()[:2],
-        str(year)[-2:])
+    return "{uwnetid}_{quarter}{year}".format(
+        uwnetid=instructor_netid,
+        quarter=quarter.lower()[:2],
+        year=str(year)[-2:])
 
 
 def exists_instructor_term_list(instructor_netid, year, quarter):
