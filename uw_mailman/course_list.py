@@ -1,8 +1,9 @@
 """
 Interface for interacting with the mailman uwnetid resource
 """
-import re
 from uw_mailman.basic_list import exists
+
+COURSE_LIST_NAME = "{prefix}{curr_abbr}{course_no}{section_id}_{quarter}{year}"
 
 
 def _get_list_name_curr_abbr(curriculum_abbr):
@@ -17,17 +18,15 @@ def get_course_list_name(curriculum_abbr, course_number, section_id,
     """
     Return the list address of UW course email list
     """
-    prefix = ""
-    if joint:
-        prefix = "multi_"
-    return "%s%s%s%s_%s%s" % (
-        prefix,
-        _get_list_name_curr_abbr(curriculum_abbr),
-        course_number,
-        section_id.lower(),
-        quarter.lower()[:2],
-        str(year)[-2:]
-        )
+    prefix = "multi_" if (joint is True) else ""
+    return COURSE_LIST_NAME.format(
+        prefix=prefix,
+        curr_abbr=_get_list_name_curr_abbr(curriculum_abbr),
+        course_no=course_number,
+        section_id=section_id.lower(),
+        quarter=quarter.lower()[:2],
+        year=str(year)[-2:]
+    )
 
 
 def exists_course_list(curriculum_abbr, course_number, section_id,
@@ -64,13 +63,14 @@ def get_secondary_combined_list_name(curriculum_abbr,
                                      primary_section_id,
                                      quarter,
                                      year):
-    return "multi_%s%s%s_%s%s" % (
-        _get_list_name_curr_abbr(curriculum_abbr),
-        course_number,
-        primary_section_id.lower(),
-        quarter.lower()[:2],
-        str(year)[-2:]
-        )
+    return COURSE_LIST_NAME.format(
+        prefix="multi_",
+        curr_abbr=_get_list_name_curr_abbr(curriculum_abbr),
+        course_no=course_number,
+        section_id=primary_section_id.lower(),
+        quarter=quarter.lower()[:2],
+        year=str(year)[-2:]
+    )
 
 
 def exists_secondary_combined_list(curriculum_abbr,

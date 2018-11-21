@@ -7,9 +7,9 @@ from uw_mailman.util import fdao_mailman_override
 class TestMailmanBasicList(TestCase):
 
     def test_get_url_path(self):
-        self.assertEqual(_get_url_path('aaa_au12'),
-                         ("/%s/admin/v1.0/uwnetid/available/?uwnetid=%s" %
-                          ("__mock_key__", 'aaa_au12')))
+        self.assertEqual(
+            _get_url_path('aaa_au12'),
+            "/__mock_key__/admin/v1.0/uwnetid/available/?uwnetid=aaa_au12")
 
     def test_exists(self):
         self.assertFalse(exists('bbio180a_au12'))

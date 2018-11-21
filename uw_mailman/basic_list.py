@@ -7,8 +7,8 @@ from commonconf import settings
 from uw_mailman import get_resource
 
 
-URL = "/%s/admin/v1.0/uwnetid/available/?uwnetid=%s"
-MAILMAN_ADMIN_URL = "https://mailman.u.washington.edu/mailman/admin/%s"
+URL = "/{key}/admin/v1.0/uwnetid/available/?uwnetid={uwnetid}"
+MAILMAN_ADMIN_URL = "https://mailman.u.washington.edu/mailman/admin/{}"
 
 
 def _get_url_path(list_name):
@@ -18,7 +18,7 @@ def _get_url_path(list_name):
     access_key = getattr(settings,
                          "RESTCLIENTS_MAILMAN_KEY",
                          "__mock_key__")
-    return URL % (access_key, list_name)
+    return URL.format(key=access_key, uwnetid=list_name)
 
 
 def exists(list_name):
@@ -39,4 +39,4 @@ def _process_json(response_body):
 
 
 def get_admin_url(list_name):
-    return MAILMAN_ADMIN_URL % list_name
+    return MAILMAN_ADMIN_URL.format(list_name)
