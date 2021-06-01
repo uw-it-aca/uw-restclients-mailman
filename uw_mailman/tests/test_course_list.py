@@ -1,3 +1,6 @@
+# Copyright 2021 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
 from unittest import TestCase
 from uw_sws.section import get_section_by_label
 from uw_mailman.course_list import _get_list_name_curr_abbr,\
