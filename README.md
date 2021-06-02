@@ -1,5 +1,11 @@
-[![Build Status](https://api.travis-ci.org/uw-it-aca/uw-restclients-mailman.svg?branch=master)](https://travis-ci.org/uw-it-aca/uw-restclients-mailman)
-[![Coverage Status](https://coveralls.io/repos/uw-it-aca/uw-restclients-mailman/badge.png?branch=master)](https://coveralls.io/r/uw-it-aca/uw-restclients-mailman?branch=master)
+# REST client for the UW MailMan API
 
-# uw-restclients-mailman
-The restclient interacting with the mailman API
+[![Build Status](https://github.com/uw-it-aca/uw-restclients-mailman/workflows/tests/badge.svg?branch=main)](https://github.com/uw-it-aca/uw-restclients-mailman/actions)
+[![Coverage Status](https://coveralls.io/repos/uw-it-aca/uw-restclients-mailman/badge.svg?branch=main)](https://coveralls.io/r/uw-it-aca/uw-restclients-mailman?branch=main)
+[![PyPi Version](https://img.shields.io/pypi/v/uw-restclients-mailman.svg)](https://pypi.python.org/pypi/uw-restclients-mailman)
+![Python versions](https://img.shields.io/pypi/pyversions/uw-restclients-mailman.svg)
+
+
+Installation:
+
+    pip install uw-restclients-mailman

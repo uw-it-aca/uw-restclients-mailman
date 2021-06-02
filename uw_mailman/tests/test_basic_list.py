@@ -1,3 +1,6 @@
+# Copyright 2021 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
 from unittest import TestCase
 from uw_mailman.basic_list import _get_url_path, exists, get_admin_url
 from uw_mailman.util import fdao_mailman_override
