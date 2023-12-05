@@ -1,13 +1,13 @@
-# Copyright 2021 UW-IT, University of Washington
+# Copyright 2023 UW-IT, University of Washington
 # SPDX-License-Identifier: Apache-2.0
 
 from unittest import TestCase
 from uw_sws.section import get_section_by_label
-from uw_mailman.course_list import _get_list_name_curr_abbr,\
-    get_course_list_name, exists_course_list, get_section_list_name,\
-    exists_section_list, get_secondary_combined_list_name,\
-    exists_secondary_combined_list, get_section_secondary_combined_list_name,\
-    exists_section_secondary_combined_list
+from uw_mailman.course_list import (
+    _get_list_name_curr_abbr, exists_section_secondary_combined_list,
+    get_course_list_name, exists_course_list, get_section_list_name,
+    exists_section_list, get_secondary_combined_list_name,
+    exists_secondary_combined_list, get_section_secondary_combined_list_name)
 from uw_sws.util import fdao_sws_override
 from uw_mailman.util import fdao_mailman_override
 
@@ -37,6 +37,12 @@ class TestMailmanCourseLists(TestCase):
         self.assertEqual(get_course_list_name("MATH", "125", "G",
                                               "summer", 2013, True),
                          'multi_math125g_su13')
+
+    def test_get_secondary_combined_list_name(self):
+        self.assertEqual(
+            get_secondary_combined_list_name(
+                "B BIO", "180", "A", "autumn", 2012),
+            "multi_bbio180a_au12")
 
     def test_exists_course_list(self):
         self.assertFalse(exists_course_list("B BIO", "180",

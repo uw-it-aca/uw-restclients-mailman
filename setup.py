@@ -1,3 +1,6 @@
+# Copyright 2023 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
 import os
 from setuptools import setup
 
@@ -21,7 +24,7 @@ setup(
     author_email="aca-it@uw.edu",
     include_package_data=True,
     install_requires=['UW-RestClients-Core',
-                      'UW-RestClients-SWS~=2.3',
+                      'UW-RestClients-SWS',
                       ],
     license='Apache License, Version 2.0',
     description=('A library for connecting to the mailman API'),
@@ -32,6 +35,6 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.8',
     ],
 )
