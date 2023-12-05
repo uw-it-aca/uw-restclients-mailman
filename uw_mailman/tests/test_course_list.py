@@ -38,6 +38,12 @@ class TestMailmanCourseLists(TestCase):
                                               "summer", 2013, True),
                          'multi_math125g_su13')
 
+    def test_get_secondary_combined_list_name(self):
+        self.assertEqual(
+            get_secondary_combined_list_name(
+                "B BIO", "180", "A", "autumn", 2012),
+            "multi_bbio180a_au12")
+
     def test_exists_course_list(self):
         self.assertFalse(exists_course_list("B BIO", "180",
                                             "A", "autumn", 2012))
