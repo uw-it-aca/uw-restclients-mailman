@@ -3,11 +3,11 @@
 
 from unittest import TestCase
 from uw_sws.section import get_section_by_label
-from uw_mailman.course_list import _get_list_name_curr_abbr,\
-    get_course_list_name, exists_course_list, get_section_list_name,\
-    exists_section_list, get_secondary_combined_list_name,\
-    exists_secondary_combined_list, get_section_secondary_combined_list_name,\
-    exists_section_secondary_combined_list
+from uw_mailman.course_list import (
+    _get_list_name_curr_abbr, exists_section_secondary_combined_list,
+    get_course_list_name, exists_course_list, get_section_list_name,
+    exists_section_list, get_secondary_combined_list_name,
+    exists_secondary_combined_list, get_section_secondary_combined_list_name)
 from uw_sws.util import fdao_sws_override
 from uw_mailman.util import fdao_mailman_override
 
