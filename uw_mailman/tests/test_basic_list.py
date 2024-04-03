@@ -12,7 +12,7 @@ class TestMailmanBasicList(TestCase):
     def test_get_url_path(self):
         self.assertEqual(
             _get_url_path('aaa_au12'),
-            "/__mock_key__/admin/v1.0/uwnetid/available/?uwnetid=aaa_au12")
+            "/uw_list_manager/api/v1/list/aaa_au12/exists")
 
     def test_exists(self):
         self.assertFalse(exists('bbio180a_au12'))
